@@ -1,46 +1,55 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+// import { useState, useEffect } from "react"
+// import axios from "axios"
 
-function App() {
+// function App() {
 
-  const [text, setText] = useState("")
-  const [notes, setNotes] = useState([])
+//   const [text, setText] = useState("")
+//   const [notes, setNotes] = useState([])
 
-  const addNote = async () => {
-    await axios.post("http://localhost:5000/add-note", { text })
-    fetchNotes()
-    setText("")
-  }
+//   const addNote = async () => {
+//     await axios.post("http://localhost:5000/add-note", { text })
+//     fetchNotes()
+//     setText("")
+//   }
 
-  const fetchNotes = async () => {
-    const res = await axios.get("http://localhost:5000/notes")
-    setNotes(res.data)
-  }
+//   const fetchNotes = async () => {
+//     const res = await axios.get("http://localhost:5000/notes")
+//     setNotes(res.data)
+//   }
 
-  useEffect(() => {
-    fetchNotes()
-  }, [])
+//   useEffect(() => {
+//     fetchNotes()
+//   }, [])
 
-  return (
-    <div style={{padding:"20px"}}>
-      <h2>Notes App</h2>
+//   return (
+//     <div style={{padding:"20px"}}>
+//       <h2>Notes App</h2>
 
-      <input
-        value={text}
-        onChange={(e)=>setText(e.target.value)}
-        placeholder="Write note"
-      />
+//       <input
+//         value={text}
+//         onChange={(e)=>setText(e.target.value)}
+//         placeholder="Write note"
+//       />
 
-      <button onClick={addNote}>Add</button>
+//       <button onClick={addNote}>Add</button>
 
-      <h3>All Notes</h3>
+//       <h3>All Notes</h3>
 
-      {notes.map((n)=>(
-        <p key={n._id}>{n.text}</p>
-      ))}
+//       {notes.map((n)=>(
+//         <p key={n._id}>{n.text}</p>
+//       ))}
 
-    </div>
-  )
+//     </div>
+//   )
+// }
+
+// export default App
+function App()
+{
+   return(
+     <>
+     <h1>Hello</h1>
+     </>
+   )
 }
-
 export default App
