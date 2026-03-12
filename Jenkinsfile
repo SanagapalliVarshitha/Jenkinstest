@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/SanagapalliVarshitha/Jenkinstest.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
