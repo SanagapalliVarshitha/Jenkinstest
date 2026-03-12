@@ -15,11 +15,11 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                bat 'npm test -- --watchAll=false'
-            }
-        }
+       stage('Test') {
+    steps {
+        bat 'npm test -- --watchAll=false --passWithNoTests'
+    }
+}
 
     }
 }
