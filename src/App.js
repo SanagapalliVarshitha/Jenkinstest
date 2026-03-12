@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 function App() {
+
+  const [text, setText] = useState("")
+  const [notes, setNotes] = useState([])
+
+  const addNote = async () => {
+    await axios.post("http://localhost:5000/add-note", { text })
+    fetchNotes()
+    setText("")
+  }
+
+  const fetchNotes = async () => {
+    const res = await axios.get("http://localhost:5000/notes")
+    setNotes(res.data)
+  }
+
+  useEffect(() => {
+    fetchNotes()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{padding:"20px"}}>
+      <h2>Notes App</h2>
+
+      <input
+        value={text}
+        onChange={(e)=>setText(e.target.value)}
+        placeholder="Write note"
+      />
+
+      <button onClick={addNote}>Add</button>
+
+      <h3>All Notes</h3>
+
+      {notes.map((n)=>(
+        <p key={n._id}>{n.text}</p>
+      ))}
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
